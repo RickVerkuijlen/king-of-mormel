@@ -1,9 +1,9 @@
-package objects.tiles;
+package nl.rickverkuijlen.mormel.game.objects.tiles;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
-import objects.Player;
+import nl.rickverkuijlen.mormel.game.objects.Player;
 
 import java.util.ArrayList;
 import java.util.List;

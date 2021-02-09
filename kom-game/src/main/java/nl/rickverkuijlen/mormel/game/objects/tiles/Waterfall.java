@@ -1,6 +1,6 @@
-package objects.tiles;
+package nl.rickverkuijlen.mormel.game.objects.tiles;
 
-import objects.Player;
+import nl.rickverkuijlen.mormel.game.objects.Player;
 
 import java.util.List;
 
