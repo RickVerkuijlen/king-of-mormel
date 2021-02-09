@@ -1,0 +1,29 @@
+<div class="home">
+    <div id="thumbnail">
+        <img src="../../../assets/images/pp.svg">
+        <h1>King of 'T Mormel</h1>
+        <h2>Het drankspel voor alle mormels!</h2>
+        <p>King of 'T Mormel is gebaseerd op het populaire drankspel <a href="https://day-games.com/games/king-of-booze-drinking-game/" target="_blank" rel="noreffer">King of Booze</a>.
+        Opdrachten en vragen zijn gebaseerd op onze vriendengroep. Ken jij of ben jij de meest losse, grappige, sexy of slimme mormel? Nou vort dan, pak de groene knuppels en laten we zuipen!</p> 
+    </div>
+</div>
+<mat-tab-group class="choice">
+    <mat-tab label="Spel spelen"> 
+        <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="Naam" formControlName="name" name="name"/>
+            <input type="text" placeholder="Gewicht in kilogram" formControlName="weightInKilogram"/>
+            <input type="text" placeholder="Glas/fles in centiliters" formControlName="drinkInCentiliter"/>
+            <input type="text" placeholder="Alcoholpercentage" formControlName="alcoholPercentage"/>
+            <select name="gender" formControlName="gender">
+                <option>Man</option>
+                <option>Vrouw</option>
+            </select><br />
+            <input type="text" placeholder="Joincode" (change)="enterJoinCode($event)"/><br />
+            <button type="submit" [disabled]="!playerForm.valid">Spelen maar!</button>
+        </form>
+        
+    </mat-tab>
+    <mat-tab label="Spel aanmaken">
+        Spel aanmaken
+    </mat-tab>
+  </mat-tab-group>

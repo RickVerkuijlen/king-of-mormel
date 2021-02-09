@@ -1,0 +1,81 @@
+div.home {
+    background-color: grey;
+    div#thumbnail {
+        background-color: rgb(22, 129, 22);
+        padding: 50px;
+        width: 50%;
+        display: inline-block;
+        text-align: center;
+        img {
+            min-height: 150px;
+            height: 40vw;
+            max-height: 250px;
+            float: left;
+            margin-right: 15px;
+        }
+    }
+}
+
+.choice {
+    width: 30%;
+    background-color: #cecece;
+    color: black;
+    margin: auto;
+    border-radius: 15px;
+    margin-top: 15px;
+    border: 1px solid black;
+    form {
+        text-align: center;
+        input, select {
+            border: none;
+            background-color: transparent;
+            border-bottom: 2px solid white;
+            width: 300px;
+            margin: 15px;
+            padding: 10px;
+            &:focus {
+                border-bottom-color: green;
+                outline: none;
+            }
+            &::placeholder {
+                color: gray;
+            }
+        }
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            margin: 5px;
+            display: inline-block;
+            &:disabled {
+                background-color: rgb(64, 85, 64);
+                cursor: no-drop;
+            }
+        }
+    }
+}
+
+.mat-tab-label {
+    color: black;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mat-tab-body-wrapper {
+    height: auto !important;
+}
+
+.mat-tab-body-content {
+    padding: 15px;
+}
+
+.mat-tab-body.mat-tab-body-active {
+    overflow-y: hidden !important;
+}
+
+.mat-ink-bar {
+    background-color: green !important;
+}

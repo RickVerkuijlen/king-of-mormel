@@ -7,8 +7,9 @@ import java.sql.Timestamp;
 
 @Data
 @Builder
-public class GameMessage {
-    private String sender;
+public class WebSocketMessage {
+    @Builder.Default private String sender = "SERVER";
     private String content;
     @Builder.Default private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    private MessageType messageType;
 }

@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/domain/user';
-import { GameMessage } from 'src/app/domain/messages/gameMessage';
+import { wsMessage } from 'src/app/domain/messages/wsMessage';
+import { Owner } from 'src/app/domain/owner';
+import { Player } from 'src/app/domain/player';
+import { join } from 'path';
+import { MessageType } from 'src/app/domain/messages/messagetype';
 
 @Injectable({
   providedIn: 'root'
@@ -35,15 +38,33 @@ export class WebsocketService {
   }
 
   private processMessages(payload: any): void {
-    console.log(payload);
+    const wsMessage: wsMessage = JSON.parse(payload.body);
+
+    console.log(wsMessage);
   }
 
-  createGame(user: User): void {
-    const wsMessage: GameMessage = {
-      sender: user.name,
-      content: JSON.stringify(user),
+  createGame(owner: Owner): void {
+    const wsMessage: wsMessage = {
+      messagetype: MessageType.CREATE_BOARD,
+      sender: owner.name,
+      content: JSON.stringify(owner),
       timestamp: new Date()
     };
     this.stompClient.send('/app/createBoard', {}, JSON.stringify(wsMessage));
+  }
+
+  joinBoard(joinCode: string, player: Player) {
+    this.stompClient.subscribe(
+      '/game/' + joinCode,
+      (res) => this.processMessages(res),
+      () => this.onError()
+    );
+    const wsMessage: wsMessage = {
+      messagetype: MessageType.ADD_PLAYER,
+      sender: player.name,
+      content: JSON.stringify(player),
+      timestamp: new Date()
+    };
+    this.stompClient.send('/app/joinBoard/' + joinCode, {}, JSON.stringify(wsMessage));
   }
 }

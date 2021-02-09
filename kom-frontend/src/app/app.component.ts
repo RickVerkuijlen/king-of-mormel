@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './domain/user';
+import { Gender } from './domain/gender';
+import { Owner } from './domain/owner';
+import { Player } from './domain/player';
 import { WebsocketService } from './services/websocket/websocket.service';
 
 @Component({
@@ -7,19 +9,9 @@ import { WebsocketService } from './services/websocket/websocket.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'King of Mormel';
 
-  constructor(private webSocketService: WebsocketService) {}
-  
-  ngOnInit(): void {
-    this.webSocketService.connect();
-  }
+  constructor() {}
 
-  createGame(): void {
-    const user: User = {
-      name: "Rick"
-    };
-    this.webSocketService.createGame(user);
-  }
 }
